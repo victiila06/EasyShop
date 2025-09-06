@@ -11,9 +11,11 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,9 +26,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import pe.edu.upc.easyshop.ui.Route
 
 @Composable
-fun Login(){
+fun Login(onLogin: () -> Unit){
 
     val email = remember {
         mutableStateOf(value = "")
@@ -52,6 +57,9 @@ fun Login(){
             modifier = Modifier.fillMaxWidth().padding(8.dp),
             leadingIcon = {
                 Icon(Icons.Default.Email, contentDescription = null )
+            },
+            placeholder = {
+                Text("Email")
             }
         )
         OutlinedTextField(
@@ -82,13 +90,23 @@ fun Login(){
                         contentDescription = null
                     )
                 }
+            },
+            placeholder = {
+                Text("Password")
             }
         )
+        Button(
+            onClick = onLogin,
+            modifier = Modifier.fillMaxWidth().padding(8.dp)
+
+        ) {
+            Text("Sign In")
+        }
     }
 }
 
 @Preview
 @Composable
 fun LoginPreview(){
-    Login()
+    Login {}
 }
