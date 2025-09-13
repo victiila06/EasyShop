@@ -5,7 +5,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import pe.edu.upc.easyshop.Login
+import pe.edu.upc.easyshop.features.auth.presentation.Login
 import pe.edu.upc.easyshop.ui.theme.EasyShopTheme
 
 @Composable
