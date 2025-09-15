@@ -150,7 +150,7 @@ fun Home() {
                 maxLines = 1,
             )
             TextButton(onClick = {}) {
-                Text("See all")
+                Text(stringResource(R.string.button_see_all))
             }
         }
 
@@ -207,12 +207,12 @@ fun Home() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                "Popular",
+                stringResource(R.string.label_popular),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
             TextButton(onClick = {}) {
-                Text("See all")
+                Text(stringResource(R.string.button_see_all))
             }
         }
 
