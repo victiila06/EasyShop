@@ -32,6 +32,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -45,7 +47,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import pe.edu.upc.easyshop.R
+import pe.edu.upc.easyshop.features.home.presentation.di.PresentationModule.getHomeViewModel
 
 import pe.edu.upc.easyshop.ui.components.ProductCard
 import pe.edu.upc.easyshop.shared.models.Product
@@ -55,6 +59,7 @@ import pe.edu.upc.easyshop.ui.theme.EasyShopTheme
 
 @Composable
 fun Home(
+    viewModel: HomeViewModel,
     onProductCard: () -> Unit
 ) {
     val search = remember {
@@ -73,7 +78,7 @@ fun Home(
         Category.Girls
     )
 
-
+    val products by viewModel.products.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
@@ -245,6 +250,6 @@ sealed class Category(val label: String) {
 fun HomePreview() {
     EasyShopTheme(dynamicColor = false)
     {
-        Home{}
+        Home(getHomeViewModel()) {}
     }
 }
